@@ -1,41 +1,366 @@
-body{
-    background-image: url('https://www.nucleodoconhecimento.com.br/wp-content/uploads/2017/07/f2-detalhe-do-triptico-o-jardim-das-delicias-terrenas-oleo-sobre-carvalho-1503-1515.jpg');
-    background-size: auto 100vh;
-    font-family:consolas;
-    Height: 100vh;
+/* reset do css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-image: url('https://66.media.tumblr.com/62af55e9d5108d629a9b16a25be885de/tumblr_nv5p1ySQtE1uhqb5ko1_540.gif');
+  background-size: unset;
+  background-repeat: repeat;
+  font-family: 'Comfortaa', cursive;
+  Height: 100vh;
+  /* width: 98vw; */
+  font-size: 12px;
+}
+
+/* se a tela tiver pelo menos 400px vai carregar esses estilos */
+
+@media (min-width: 400px) {
+  body {
+    font-size: 14px;
+    font-family: 'Comfortaa', cursive;
   }
-  
-  .menu{
-    background-color: #FFDAB9;
+}
+
+@media (min-width: 600px) {
+  body {
+    font-size: 18px;
+    font-family: 'Comfortaa', cursive;
   }
-  
-  .menu ul {
-   display: flex; 
-    Justify-content: space-around;
+}
+
+header {
+  height: 100vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.menu {
+  background-color: LEMONCHIFFON;
+  opacity: 0.8;
+  position: fixed;
+  width: 100vw;
+  top: 0px;
+  z-index: 1;
+}
+
+.menu ul {
+  display: flex;
+  Justify-content: space-around;
+}
+
+.menu li {
+  list-style: none;
+}
+
+.menu a {
+  display: block;
+  padding: 10px 20px;
+  text-decoration-line: none;
+  transition: color 3s;
+}
+
+.menu a:hover {
+  background-color: orange;
+  color: orangered
+}
+
+.menu a:active {
+  background-color: indigo;
+  color: orangered
+}
+
+a {
+  color: GRAY;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.titulo {
+  transform: scale(0.2) translateY(50vh);
+  opacity: 0;
+  animation: cubic-bezier(0.175, 0.885, 0.32, 1.275) 2s animacaoTitulo forwards;
+}
+
+@keyframes animacaoTitulo {
+  0% {
+    transform: scale(0.2) translateX(50vh);
+    opacity: 0;
   }
-  
-  .menu li{
-    list-style: none;
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
   }
-  
-  a{
-    color: GRAY;
-    text-decoration:none;
-    
+}
+
+.site-title {
+  color: LIGHTYELLOW;
+  font-family: 'Sacramento', cursive;
+  font-size: 4em;
+  margin-right: 55px;
+  text-align: right;
+}
+
+.site-subtitle {
+  color: indigo;
+  font-family: 'Economica', sans-serif;
+  margin-right: 55px;
+  text-align: right;
+}
+
+.contato, .sobre, .Portfolio {
+  padding: 2em;
+  min-height: 100vh;
+  background-color: darkorange;
+  margin-bottom: 2em;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
   }
-  
-  a:hover {
-    text-decoration:underline;
+}
+
+.sobre h2, .contato h2, .Portfolio h2 {
+  font-family: 'Comfortaa', cursive;
+  color: indigo;
+  margin-bottom: 2em;
+  margin-top: 2em;
+}
+
+.sobre p {
+  color: indigo;
+  text-indent: 4em;
+  margin-bottom: 2em;
+  margin-top: 2em;
+  margin-left: 2em;
+  margin-right: 2em;
+  text-align: justify;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.Portfolio .grid {
+  display: grid;
+  gap: 2em;
+}
+
+@media (min-width: 560px) {
+  .Portfolio .grid {
+    grid-template-columns: 240px 240px;
   }
-  
-  .site-title {
-    text-align:right;
-    color: LIGHTYELLOW
+}
+
+@media (min-width: 880px) {
+  .Portfolio .grid {
+    grid-template-columns: repeat(4, 240px);
+    align-content: center;
+    justify-content: center;
+    height: calc(100vh - 8em - 75px)
   }
-  
-  .site-subtitle {
-    text-align: right;
-    color: LIGHTSLATEGRAY;
-    font-family: consolas light;
-    font-family: italic;
+}
+
+.Portfolio figure {
+  text-align: left;
+}
+
+.img-portfolio {
+  transition: transform ease 500ms;
+  max-width: 400px;
+  height: 180px;
+  width: 100%;
+  object-fit: cover;
+  object-position: cover right;
+  border-radius: 8px;
+}
+/*
+.img-portfolio:hover {
+  transform: scale(1.05);
+}*/
+
+.flip-card {
+  height: 220px;
+  perspective: 1000px;
+}
+
+.flip-card:hover .card {
+  transform: rotateY(180deg);
+}
+
+.card {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 3s;
+}
+
+.card-frente, .card-verso {
+  backface-visibility: hidden;
+  left: 0;
+  position: absolute;
+  top: 0;
+  height: 180px;
+  width: 100%;
+  border-radius: 5px;
+  top: 30px;
+}
+
+.card-verso {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: lemonchiffon;
+  transform: rotateY(180deg);
+  color: indigo;
+}
+
+.contato .icons {
+  text-align: left;
+  padding-top: 2em;
+}
+
+@media (min-width: 1200px;
+) {
+  .img-portfolio {
+    height: auto;
+    width: 100%;
   }
+}
+
+.contato a {
+  color: GRAY;
+  font-size: 4em;
+  transition: text-shadow 3ms;
+}
+
+.contato a:active, .contato a:hover {
+  text-decoration: none;
+}
+
+.contato a.github:hover {
+  text-shadow: 0px 0px 20px gold;
+}
+
+.contato a.instagram:hover {
+  text-shadow: 0px 0px 10px darkviolet;
+}
+
+.contato a.linkedin:hover {
+  text-shadow: 0px 0px 10px limegreen;
+}
+
+.contato a.email:hover {
+  text-shadow: 0px 0px 10px orangered;
+}
+
+.contato .grid {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+}
+
+.footer a {
+  color: honeydew;
+  font-size: 1em;
+  transition: text-shadow 1s;
+  text-decoration: underline;
+}
+
+.bg-footer {
+  color: gray;
+  align-items: center;
+  padding: 1.5em;
+}
+
+.footer {
+  color: indigo;
+  text-align: end;
+  background-color: darkorange;
+  padding: .5em;
+  margin: 0em;
+  text-align: center;
+}
+
+.sobre .avatar {
+  margin-left: 4em;
+  margin-right: 2em;
+}
+
+@media (min-width: 600px) {
+  .sobre .avatar {
+    float: right;
+  }
+}
+
+.sobre .avatar img {
+  border-radius: 0.8em;
+}
+
+.contato .formulario {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-family: 'Comfortaa', cursive;
+  color:indigo;
+  font-weight: 700;  
+  padding-left: 2em;  
+}
+
+.formulario input {
+  height: 35px;
+  max-width: 400px;
+  width: 100%;
+  margin-top: 4px;
+  margin-bottom: 25px;
+  border-radius: 5px;
+  padding: 5px;
+  font-family: 'Comfortaa', cursive;
+  font-size: 0.8em;
+  color: gray;
+  font-weight: 700;
+  border: 1px solid gray;
+
+  /* -webkit-border-radius: 3px;
+  border-radius: 3px;
+ 
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.6) inset;
+  box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.6) inset;
+ 
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear; */
+}
+
+
+.formulario textarea {
+  max-width: 400px;
+  width: 100%;
+  border-radius: 5px;
+  outline: none;
+  font-family: 'Comfortaa', cursive;
+  font-size: 0.8em;
+  color: #666;
+  font-weight: 700;
+}
+
+.formulario button {
+  background-color:indigo;
+  color: white;
+  padding: 15px 27px;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  font-size: 16px;
+  width: 20%;
+  font-family: 'Comfortaa', cursive;
+}
